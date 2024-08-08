@@ -1,0 +1,1402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BarteringApplicationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_id" />
+          </Key>
+          <Property Name="Admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_name" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Attribute_Values">
+          <Key>
+            <PropertyRef Name="value_id" />
+          </Key>
+          <Property Name="value_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attribute_id" Type="int" />
+          <Property Name="value" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="brand_id" />
+          </Key>
+          <Property Name="brand_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brand_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="subcategory_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Category_id" />
+          </Key>
+          <Property Name="Category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category_name" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Item_images">
+          <Key>
+            <PropertyRef Name="Image_id" />
+          </Key>
+          <Property Name="Image_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image_01" Type="varchar(max)" />
+          <Property Name="Image_02" Type="varchar(max)" />
+          <Property Name="Image_03" Type="varchar(max)" />
+          <Property Name="Image_04" Type="varchar(max)" />
+          <Property Name="Image_05" Type="varchar(max)" />
+          <Property Name="Item_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="Item_id" />
+          </Key>
+          <Property Name="Item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item_name" Type="varchar(max)" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Category" Type="varchar(max)" />
+          <Property Name="Verification_status" Type="varchar(max)" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Barter_for" Type="varchar(max)" />
+          <Property Name="User_id" Type="int" />
+          <Property Name="SubCategory" Type="varchar(max)" />
+          <Property Name="isSold" Type="varchar" MaxLength="10" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="model_id" />
+          </Key>
+          <Property Name="model_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="model_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="brand_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="n_id" />
+          </Key>
+          <Property Name="n_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="255" />
+          <Property Name="Item_id" Type="int" />
+          <Property Name="User_id" Type="int" />
+          <Property Name="Status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="Offer_id" />
+          </Key>
+          <Property Name="Offer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Sender_id" Type="int" />
+          <Property Name="Receiver_id" Type="int" />
+          <Property Name="Requested_item" Type="int" />
+          <Property Name="RequestDescription" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Offered_items">
+          <Key>
+            <PropertyRef Name="Offered_item_id" />
+          </Key>
+          <Property Name="Offered_item_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Offer_id" Type="int" />
+          <Property Name="Item_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="rating_id" />
+          </Key>
+          <Property Name="rating_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="rated_by_user_id" Type="int" Nullable="false" />
+          <Property Name="rating_value" Type="int" />
+          <Property Name="Date" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Req_id" />
+          </Key>
+          <Property Name="Req_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="varchar(max)" />
+          <Property Name="Req_status" Type="varchar(max)" />
+          <Property Name="Offer_id" Type="int" />
+          <Property Name="ConfirmOfferRequestSender" Type="varchar" MaxLength="20" />
+          <Property Name="ConfirmOfferRequestReceiver" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Subcategories">
+          <Key>
+            <PropertyRef Name="subcategory_id" />
+          </Key>
+          <Property Name="subcategory_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subcategory_name" Type="varchar" MaxLength="255" />
+          <Property Name="category_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Subcategory_Attributes">
+          <Key>
+            <PropertyRef Name="attribute_id" />
+          </Key>
+          <Property Name="attribute_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="attribute_name" Type="varchar" MaxLength="255" />
+          <Property Name="subcategory_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Trusted_party">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_name" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="Contact" Type="varchar(max)" />
+          <Property Name="Item_id" Type="int" />
+        </EntityType>
+        <EntityType Name="uploadedItemsAttributes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item_id" Type="int" />
+          <Property Name="attribute_name" Type="varchar(max)" />
+          <Property Name="attribute_value" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_name" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="Contact" Type="varchar(max)" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="Location" Type="varchar(max)" />
+          <Property Name="Rating" Type="float" />
+          <Property Name="Gender" Type="varchar(max)" />
+          <Property Name="rating_count" Type="int" />
+          <Property Name="Profile_Pic" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Verification_requests">
+          <Key>
+            <PropertyRef Name="Verification_id" />
+          </Key>
+          <Property Name="Verification_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Trusted_party_id" Type="int" />
+          <Property Name="Item_id" Type="int" />
+        </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="Barter_id" />
+          </Key>
+          <Property Name="Barter_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item_id" Type="int" Nullable="false" />
+          <Property Name="BarterFor" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK__Attribute__attri__0C50D423">
+          <End Role="Subcategory_Attributes" Type="Self.Subcategory_Attributes" Multiplicity="0..1" />
+          <End Role="Attribute_Values" Type="Self.Attribute_Values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subcategory_Attributes">
+              <PropertyRef Name="attribute_id" />
+            </Principal>
+            <Dependent Role="Attribute_Values">
+              <PropertyRef Name="attribute_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BarterFor__Item___67DE6983">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Brands__subcateg__1C873BEC">
+          <End Role="Subcategories" Type="Self.Subcategories" Multiplicity="0..1" />
+          <End Role="Brands" Type="Self.Brands" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subcategories">
+              <PropertyRef Name="subcategory_id" />
+            </Principal>
+            <Dependent Role="Brands">
+              <PropertyRef Name="subcategory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Item_imag__Item___4E88ABD4">
+          <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+          <End Role="Item_images" Type="Self.Item_images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Item_images">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Items__User_id__4BAC3F29">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Models__brand_id__1F63A897">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="Models" Type="Self.Models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="brand_id" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__Item___41B8C09B">
+          <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__User___42ACE4D4">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Offer__Receiver___571DF1D5">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="Receiver_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Offer__Requested__5812160E">
+          <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="Requested_item" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Offer__Sender_id__5629CD9C">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="Sender_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Offered_i__Item___5BE2A6F2">
+          <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+          <End Role="Offered_items" Type="Self.Offered_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Offered_items">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Offered_i__Offer__5AEE82B9">
+          <End Role="Offer" Type="Self.Offer" Multiplicity="0..1" />
+          <End Role="Offered_items" Type="Self.Offered_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Offer_id" />
+            </Principal>
+            <Dependent Role="Offered_items">
+              <PropertyRef Name="Offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rating__rated_by__57A801BA">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="rated_by_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rating__user_id__56B3DD81">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__Offer_i__5EBF139D">
+          <End Role="Offer" Type="Self.Offer" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Offer_id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="Offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subcatego__categ__0697FACD">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Subcategories" Type="Self.Subcategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category_id" />
+            </Principal>
+            <Dependent Role="Subcategories">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subcatego__subca__09746778">
+          <End Role="Subcategories" Type="Self.Subcategories" Multiplicity="0..1" />
+          <End Role="Subcategory_Attributes" Type="Self.Subcategory_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subcategories">
+              <PropertyRef Name="subcategory_id" />
+            </Principal>
+            <Dependent Role="Subcategory_Attributes">
+              <PropertyRef Name="subcategory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trusted_p__Item___5165187F">
+          <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+          <End Role="Trusted_party" Type="Self.Trusted_party" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Trusted_party">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__uploadedI__Item___2EA5EC27">
+          <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+          <End Role="uploadedItemsAttributes" Type="Self.uploadedItemsAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="uploadedItemsAttributes">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Verificat__Item___70DDC3D8">
+          <End Role="Items" Type="Self.Items" Multiplicity="0..1" />
+          <End Role="Verification_requests" Type="Self.Verification_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Verification_requests">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Verificat__Trust__6FE99F9F">
+          <End Role="Trusted_party" Type="Self.Trusted_party" Multiplicity="0..1" />
+          <End Role="Verification_requests" Type="Self.Verification_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trusted_party">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Verification_requests">
+              <PropertyRef Name="Trusted_party_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BarteringApplicationModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attribute_Values" EntityType="Self.Attribute_Values" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item_images" EntityType="Self.Item_images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Models" EntityType="Self.Models" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offer" EntityType="Self.Offer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Offered_items" EntityType="Self.Offered_items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subcategories" EntityType="Self.Subcategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subcategory_Attributes" EntityType="Self.Subcategory_Attributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trusted_party" EntityType="Self.Trusted_party" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uploadedItemsAttributes" EntityType="Self.uploadedItemsAttributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Verification_requests" EntityType="Self.Verification_requests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WishList" EntityType="Self.WishList" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Attribute__attri__0C50D423" Association="Self.FK__Attribute__attri__0C50D423">
+            <End Role="Subcategory_Attributes" EntitySet="Subcategory_Attributes" />
+            <End Role="Attribute_Values" EntitySet="Attribute_Values" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BarterFor__Item___67DE6983" Association="Self.FK__BarterFor__Item___67DE6983">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="WishList" EntitySet="WishList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Brands__subcateg__1C873BEC" Association="Self.FK__Brands__subcateg__1C873BEC">
+            <End Role="Subcategories" EntitySet="Subcategories" />
+            <End Role="Brands" EntitySet="Brands" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Item_imag__Item___4E88ABD4" Association="Self.FK__Item_imag__Item___4E88ABD4">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Item_images" EntitySet="Item_images" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Items__User_id__4BAC3F29" Association="Self.FK__Items__User_id__4BAC3F29">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Models__brand_id__1F63A897" Association="Self.FK__Models__brand_id__1F63A897">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__Item___41B8C09B" Association="Self.FK__Notificat__Item___41B8C09B">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__User___42ACE4D4" Association="Self.FK__Notificat__User___42ACE4D4">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Offer__Receiver___571DF1D5" Association="Self.FK__Offer__Receiver___571DF1D5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Offer__Requested__5812160E" Association="Self.FK__Offer__Requested__5812160E">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Offer__Sender_id__5629CD9C" Association="Self.FK__Offer__Sender_id__5629CD9C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Offer" EntitySet="Offer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Offered_i__Item___5BE2A6F2" Association="Self.FK__Offered_i__Item___5BE2A6F2">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Offered_items" EntitySet="Offered_items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Offered_i__Offer__5AEE82B9" Association="Self.FK__Offered_i__Offer__5AEE82B9">
+            <End Role="Offer" EntitySet="Offer" />
+            <End Role="Offered_items" EntitySet="Offered_items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rating__rated_by__57A801BA" Association="Self.FK__Rating__rated_by__57A801BA">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rating__user_id__56B3DD81" Association="Self.FK__Rating__user_id__56B3DD81">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__Offer_i__5EBF139D" Association="Self.FK__Request__Offer_i__5EBF139D">
+            <End Role="Offer" EntitySet="Offer" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subcatego__categ__0697FACD" Association="Self.FK__Subcatego__categ__0697FACD">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Subcategories" EntitySet="Subcategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subcatego__subca__09746778" Association="Self.FK__Subcatego__subca__09746778">
+            <End Role="Subcategories" EntitySet="Subcategories" />
+            <End Role="Subcategory_Attributes" EntitySet="Subcategory_Attributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trusted_p__Item___5165187F" Association="Self.FK__Trusted_p__Item___5165187F">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Trusted_party" EntitySet="Trusted_party" />
+          </AssociationSet>
+          <AssociationSet Name="FK__uploadedI__Item___2EA5EC27" Association="Self.FK__uploadedI__Item___2EA5EC27">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="uploadedItemsAttributes" EntitySet="uploadedItemsAttributes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Verificat__Item___70DDC3D8" Association="Self.FK__Verificat__Item___70DDC3D8">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Verification_requests" EntitySet="Verification_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Verificat__Trust__6FE99F9F" Association="Self.FK__Verificat__Trust__6FE99F9F">
+            <End Role="Trusted_party" EntitySet="Trusted_party" />
+            <End Role="Verification_requests" EntitySet="Verification_requests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BarteringApplicationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Admin_id" />
+          </Key>
+          <Property Name="Admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Item_images">
+          <Key>
+            <PropertyRef Name="Image_id" />
+          </Key>
+          <Property Name="Image_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image_01" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image_02" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image_03" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image_04" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image_05" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Item_id" Type="Int32" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Item_imag__Item___4E88ABD4" FromRole="Item_images" ToRole="Items" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Item_id" />
+          </Key>
+          <Property Name="Item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Verification_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Barter_for" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="User_id" Type="Int32" />
+          <NavigationProperty Name="Item_images" Relationship="Self.FK__Item_imag__Item___4E88ABD4" FromRole="Items" ToRole="Item_images" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Items__User_id__4BAC3F29" FromRole="Items" ToRole="Users" />
+          <NavigationProperty Name="Offers" Relationship="Self.FK__Offer__Requested__5812160E" FromRole="Items" ToRole="Offer" />
+          <NavigationProperty Name="Offered_items" Relationship="Self.FK__Offered_i__Item___5BE2A6F2" FromRole="Items" ToRole="Offered_items" />
+          <NavigationProperty Name="Trusted_party" Relationship="Self.FK__Trusted_p__Item___5165187F" FromRole="Items" ToRole="Trusted_party" />
+          <NavigationProperty Name="Verification_requests" Relationship="BarteringApplicationModel.FK__Verificat__Item___70DDC3D8" FromRole="Item" ToRole="Verification_requests" />
+          <Property Name="SubCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="uploadedItemsAttributes" Relationship="BarteringApplicationModel.FK__uploadedI__Item___2EA5EC27" FromRole="Item" ToRole="uploadedItemsAttributes" />
+          <NavigationProperty Name="Notification" Relationship="BarteringApplicationModel.FK__Notificat__Item___41B8C09B" FromRole="Item" ToRole="Notification" />
+          <Property Name="isSold" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="WishList" Relationship="BarteringApplicationModel.FK__BarterFor__Item___67DE69831" FromRole="Item" ToRole="WishList" />
+        </EntityType>
+        <EntityType Name="Offer">
+          <Key>
+            <PropertyRef Name="Offer_id" />
+          </Key>
+          <Property Name="Offer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Sender_id" Type="Int32" />
+          <Property Name="Receiver_id" Type="Int32" />
+          <Property Name="Requested_item" Type="Int32" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Offer__Requested__5812160E" FromRole="Offer" ToRole="Items" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Offer__Receiver___571DF1D5" FromRole="Offer" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__Offer__Sender_id__5629CD9C" FromRole="Offer" ToRole="Users" />
+          <NavigationProperty Name="Offered_items" Relationship="Self.FK__Offered_i__Offer__5AEE82B9" FromRole="Offer" ToRole="Offered_items" />
+          <NavigationProperty Name="Requests" Relationship="Self.FK__Request__Offer_i__5EBF139D" FromRole="Offer" ToRole="Request" />
+          <Property Name="RequestDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Offered_items">
+          <Key>
+            <PropertyRef Name="Offered_item_id" />
+          </Key>
+          <Property Name="Offered_item_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Offer_id" Type="Int32" />
+          <Property Name="Item_id" Type="Int32" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Offered_i__Item___5BE2A6F2" FromRole="Offered_items" ToRole="Items" />
+          <NavigationProperty Name="Offer" Relationship="Self.FK__Offered_i__Offer__5AEE82B9" FromRole="Offered_items" ToRole="Offer" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="Req_id" />
+          </Key>
+          <Property Name="Req_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Req_status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Offer_id" Type="Int32" />
+          <NavigationProperty Name="Offer" Relationship="Self.FK__Request__Offer_i__5EBF139D" FromRole="Request" ToRole="Offer" />
+          <Property Name="ConfirmOfferRequestSender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ConfirmOfferRequestReceiver" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Trusted_party">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Item_id" Type="Int32" />
+          <NavigationProperty Name="Item" Relationship="Self.FK__Trusted_p__Item___5165187F" FromRole="Trusted_party" ToRole="Items" />
+          <NavigationProperty Name="Verification_requests" Relationship="BarteringApplicationModel.FK__Verificat__Trust__6FE99F9F" FromRole="Trusted_party" ToRole="Verification_requests" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="User_id" />
+          </Key>
+          <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="Double" />
+          <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Items" Relationship="Self.FK__Items__User_id__4BAC3F29" FromRole="Users" ToRole="Items" />
+          <NavigationProperty Name="Offers" Relationship="Self.FK__Offer__Receiver___571DF1D5" FromRole="Users" ToRole="Offer" />
+          <NavigationProperty Name="Offers1" Relationship="Self.FK__Offer__Sender_id__5629CD9C" FromRole="Users" ToRole="Offer" />
+          <NavigationProperty Name="Notification" Relationship="BarteringApplicationModel.FK__Notificat__User___42ACE4D4" FromRole="User" ToRole="Notification" />
+          <Property Name="rating_count" Type="Int32" />
+          <NavigationProperty Name="Rating1" Relationship="BarteringApplicationModel.FK__Rating__rated_by__57A801BA" FromRole="User" ToRole="Rating" />
+          <NavigationProperty Name="Rating2" Relationship="BarteringApplicationModel.FK__Rating__user_id__56B3DD81" FromRole="User" ToRole="Rating" />
+          <Property Name="Profile_Pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Item_imag__Item___4E88ABD4">
+          <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Item_images" Type="Self.Item_images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Item_images">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Items__User_id__4BAC3F29">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Items" Type="Self.Item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Items">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Offer__Requested__5812160E">
+          <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="Requested_item" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Offered_i__Item___5BE2A6F2">
+          <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Offered_items" Type="Self.Offered_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Offered_items">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Trusted_p__Item___5165187F">
+          <End Role="Items" Type="Self.Item" Multiplicity="0..1" />
+          <End Role="Trusted_party" Type="Self.Trusted_party" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Trusted_party">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Offer__Receiver___571DF1D5">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="Receiver_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Offer__Sender_id__5629CD9C">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Offer" Type="Self.Offer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Offer">
+              <PropertyRef Name="Sender_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Offered_i__Offer__5AEE82B9">
+          <End Role="Offer" Type="Self.Offer" Multiplicity="0..1" />
+          <End Role="Offered_items" Type="Self.Offered_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Offer_id" />
+            </Principal>
+            <Dependent Role="Offered_items">
+              <PropertyRef Name="Offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__Offer_i__5EBF139D">
+          <End Role="Offer" Type="Self.Offer" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Offer">
+              <PropertyRef Name="Offer_id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="Offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BarteringAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Item_images" EntityType="Self.Item_images" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Offers" EntityType="Self.Offer" />
+          <EntitySet Name="Offered_items" EntityType="Self.Offered_items" />
+          <EntitySet Name="Requests" EntityType="Self.Request" />
+          <EntitySet Name="Trusted_party" EntityType="Self.Trusted_party" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Item_imag__Item___4E88ABD4" Association="Self.FK__Item_imag__Item___4E88ABD4">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Item_images" EntitySet="Item_images" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Items__User_id__4BAC3F29" Association="Self.FK__Items__User_id__4BAC3F29">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Items" EntitySet="Items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Offer__Requested__5812160E" Association="Self.FK__Offer__Requested__5812160E">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Offer" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Offered_i__Item___5BE2A6F2" Association="Self.FK__Offered_i__Item___5BE2A6F2">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Offered_items" EntitySet="Offered_items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Trusted_p__Item___5165187F" Association="Self.FK__Trusted_p__Item___5165187F">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Trusted_party" EntitySet="Trusted_party" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Offer__Receiver___571DF1D5" Association="Self.FK__Offer__Receiver___571DF1D5">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Offer" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Offer__Sender_id__5629CD9C" Association="Self.FK__Offer__Sender_id__5629CD9C">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Offer" EntitySet="Offers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Offered_i__Offer__5AEE82B9" Association="Self.FK__Offered_i__Offer__5AEE82B9">
+            <End Role="Offer" EntitySet="Offers" />
+            <End Role="Offered_items" EntitySet="Offered_items" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__Offer_i__5EBF139D" Association="Self.FK__Request__Offer_i__5EBF139D">
+            <End Role="Offer" EntitySet="Offers" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <EntitySet Name="Verification_requests" EntityType="BarteringApplicationModel.Verification_requests" />
+          <AssociationSet Name="FK__Verificat__Item___70DDC3D8" Association="BarteringApplicationModel.FK__Verificat__Item___70DDC3D8">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Verification_requests" EntitySet="Verification_requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Verificat__Trust__6FE99F9F" Association="BarteringApplicationModel.FK__Verificat__Trust__6FE99F9F">
+            <End Role="Trusted_party" EntitySet="Trusted_party" />
+            <End Role="Verification_requests" EntitySet="Verification_requests" />
+          </AssociationSet>
+          <EntitySet Name="Categories" EntityType="BarteringApplicationModel.Category" />
+          <EntitySet Name="Attribute_Values" EntityType="BarteringApplicationModel.Attribute_Values" />
+          <EntitySet Name="Subcategories" EntityType="BarteringApplicationModel.Subcategories" />
+          <EntitySet Name="Subcategory_Attributes" EntityType="BarteringApplicationModel.Subcategory_Attributes" />
+          <AssociationSet Name="FK__Attribute__attri__0C50D423" Association="BarteringApplicationModel.FK__Attribute__attri__0C50D423">
+            <End Role="Subcategory_Attributes" EntitySet="Subcategory_Attributes" />
+            <End Role="Attribute_Values" EntitySet="Attribute_Values" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subcatego__categ__0697FACD" Association="BarteringApplicationModel.FK__Subcatego__categ__0697FACD">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Subcategories" EntitySet="Subcategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Subcatego__subca__09746778" Association="BarteringApplicationModel.FK__Subcatego__subca__09746778">
+            <End Role="Subcategories" EntitySet="Subcategories" />
+            <End Role="Subcategory_Attributes" EntitySet="Subcategory_Attributes" />
+          </AssociationSet>
+          <EntitySet Name="Brands" EntityType="BarteringApplicationModel.Brands" />
+          <EntitySet Name="Models" EntityType="BarteringApplicationModel.Models" />
+          <AssociationSet Name="FK__Brands__subcateg__1C873BEC" Association="BarteringApplicationModel.FK__Brands__subcateg__1C873BEC">
+            <End Role="Subcategories" EntitySet="Subcategories" />
+            <End Role="Brands" EntitySet="Brands" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Models__brand_id__1F63A897" Association="BarteringApplicationModel.FK__Models__brand_id__1F63A897">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Models" EntitySet="Models" />
+          </AssociationSet>
+          <EntitySet Name="uploadedItemsAttributes" EntityType="BarteringApplicationModel.uploadedItemsAttributes" />
+          <AssociationSet Name="FK__uploadedI__Item___2EA5EC27" Association="BarteringApplicationModel.FK__uploadedI__Item___2EA5EC27">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="uploadedItemsAttributes" EntitySet="uploadedItemsAttributes" />
+          </AssociationSet>
+          <EntitySet Name="Notification" EntityType="BarteringApplicationModel.Notification" />
+          <AssociationSet Name="FK__Notificat__Item___41B8C09B" Association="BarteringApplicationModel.FK__Notificat__Item___41B8C09B">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Notificat__User___42ACE4D4" Association="BarteringApplicationModel.FK__Notificat__User___42ACE4D4">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <EntitySet Name="Rating" EntityType="BarteringApplicationModel.Rating" />
+          <AssociationSet Name="FK__Rating__rated_by__57A801BA" Association="BarteringApplicationModel.FK__Rating__rated_by__57A801BA">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rating__user_id__56B3DD81" Association="BarteringApplicationModel.FK__Rating__user_id__56B3DD81">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <EntitySet Name="WishList" EntityType="BarteringApplicationModel.WishList" />
+          <AssociationSet Name="FK__BarterFor__Item___67DE69831" Association="BarteringApplicationModel.FK__BarterFor__Item___67DE69831">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="WishList" EntitySet="WishList" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Verification_requests">
+          <Key>
+            <PropertyRef Name="Verification_id" />
+          </Key>
+          <Property Name="Verification_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Trusted_party_id" Type="Int32" />
+          <Property Name="Item_id" Type="Int32" />
+          <NavigationProperty Name="Item" Relationship="BarteringApplicationModel.FK__Verificat__Item___70DDC3D8" FromRole="Verification_requests" ToRole="Item" />
+          <NavigationProperty Name="Trusted_party" Relationship="BarteringApplicationModel.FK__Verificat__Trust__6FE99F9F" FromRole="Verification_requests" ToRole="Trusted_party" />
+        </EntityType>
+        <Association Name="FK__Verificat__Item___70DDC3D8">
+          <End Type="BarteringApplicationModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="BarteringApplicationModel.Verification_requests" Role="Verification_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Verification_requests">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Verificat__Trust__6FE99F9F">
+          <End Type="BarteringApplicationModel.Trusted_party" Role="Trusted_party" Multiplicity="0..1" />
+          <End Type="BarteringApplicationModel.Verification_requests" Role="Verification_requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trusted_party">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Verification_requests">
+              <PropertyRef Name="Trusted_party_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Category_id" />
+          </Key>
+          <Property Name="Category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Subcategories" Relationship="BarteringApplicationModel.FK__Subcatego__categ__0697FACD" FromRole="Category" ToRole="Subcategories" />
+        </EntityType>
+        <EntityType Name="Attribute_Values">
+          <Key>
+            <PropertyRef Name="value_id" />
+          </Key>
+          <Property Name="value_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attribute_id" Type="Int32" />
+          <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Subcategory_Attributes" Relationship="BarteringApplicationModel.FK__Attribute__attri__0C50D423" FromRole="Attribute_Values" ToRole="Subcategory_Attributes" />
+        </EntityType>
+        <EntityType Name="Subcategories">
+          <Key>
+            <PropertyRef Name="subcategory_id" />
+          </Key>
+          <Property Name="subcategory_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subcategory_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="category_id" Type="Int32" />
+          <NavigationProperty Name="Categories" Relationship="BarteringApplicationModel.FK__Subcatego__categ__0697FACD" FromRole="Subcategories" ToRole="Category" />
+          <NavigationProperty Name="Subcategory_Attributes" Relationship="BarteringApplicationModel.FK__Subcatego__subca__09746778" FromRole="Subcategories" ToRole="Subcategory_Attributes" />
+          <NavigationProperty Name="Brands" Relationship="BarteringApplicationModel.FK__Brands__subcateg__1C873BEC" FromRole="Subcategories" ToRole="Brands" />
+        </EntityType>
+        <EntityType Name="Subcategory_Attributes">
+          <Key>
+            <PropertyRef Name="attribute_id" />
+          </Key>
+          <Property Name="attribute_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="attribute_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="subcategory_id" Type="Int32" />
+          <NavigationProperty Name="Attribute_Values" Relationship="BarteringApplicationModel.FK__Attribute__attri__0C50D423" FromRole="Subcategory_Attributes" ToRole="Attribute_Values" />
+          <NavigationProperty Name="Subcategories" Relationship="BarteringApplicationModel.FK__Subcatego__subca__09746778" FromRole="Subcategory_Attributes" ToRole="Subcategories" />
+        </EntityType>
+        <Association Name="FK__Attribute__attri__0C50D423">
+          <End Type="BarteringApplicationModel.Subcategory_Attributes" Role="Subcategory_Attributes" Multiplicity="0..1" />
+          <End Type="BarteringApplicationModel.Attribute_Values" Role="Attribute_Values" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subcategory_Attributes">
+              <PropertyRef Name="attribute_id" />
+            </Principal>
+            <Dependent Role="Attribute_Values">
+              <PropertyRef Name="attribute_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subcatego__categ__0697FACD">
+          <End Type="BarteringApplicationModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="BarteringApplicationModel.Subcategories" Role="Subcategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Category_id" />
+            </Principal>
+            <Dependent Role="Subcategories">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Subcatego__subca__09746778">
+          <End Type="BarteringApplicationModel.Subcategories" Role="Subcategories" Multiplicity="0..1" />
+          <End Type="BarteringApplicationModel.Subcategory_Attributes" Role="Subcategory_Attributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subcategories">
+              <PropertyRef Name="subcategory_id" />
+            </Principal>
+            <Dependent Role="Subcategory_Attributes">
+              <PropertyRef Name="subcategory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="brand_id" />
+          </Key>
+          <Property Name="brand_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brand_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="subcategory_id" Type="Int32" />
+          <NavigationProperty Name="Subcategories" Relationship="BarteringApplicationModel.FK__Brands__subcateg__1C873BEC" FromRole="Brands" ToRole="Subcategories" />
+          <NavigationProperty Name="Models" Relationship="BarteringApplicationModel.FK__Models__brand_id__1F63A897" FromRole="Brands" ToRole="Models" />
+        </EntityType>
+        <EntityType Name="Models">
+          <Key>
+            <PropertyRef Name="model_id" />
+          </Key>
+          <Property Name="model_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="model_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="brand_id" Type="Int32" />
+          <NavigationProperty Name="Brands" Relationship="BarteringApplicationModel.FK__Models__brand_id__1F63A897" FromRole="Models" ToRole="Brands" />
+        </EntityType>
+        <Association Name="FK__Brands__subcateg__1C873BEC">
+          <End Type="BarteringApplicationModel.Subcategories" Role="Subcategories" Multiplicity="0..1" />
+          <End Type="BarteringApplicationModel.Brands" Role="Brands" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subcategories">
+              <PropertyRef Name="subcategory_id" />
+            </Principal>
+            <Dependent Role="Brands">
+              <PropertyRef Name="subcategory_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Models__brand_id__1F63A897">
+          <End Type="BarteringApplicationModel.Brands" Role="Brands" Multiplicity="0..1" />
+          <End Type="BarteringApplicationModel.Models" Role="Models" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="brand_id" />
+            </Principal>
+            <Dependent Role="Models">
+              <PropertyRef Name="brand_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="uploadedItemsAttributes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item_id" Type="Int32" />
+          <Property Name="attribute_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="attribute_value" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Items" Relationship="BarteringApplicationModel.FK__uploadedI__Item___2EA5EC27" FromRole="uploadedItemsAttributes" ToRole="Item" />
+        </EntityType>
+        <Association Name="FK__uploadedI__Item___2EA5EC27">
+          <End Type="BarteringApplicationModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="BarteringApplicationModel.uploadedItemsAttributes" Role="uploadedItemsAttributes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="uploadedItemsAttributes">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="n_id" />
+          </Key>
+          <Property Name="n_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="message" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Item_id" Type="Int32" />
+          <Property Name="User_id" Type="Int32" />
+          <NavigationProperty Name="Items" Relationship="BarteringApplicationModel.FK__Notificat__Item___41B8C09B" FromRole="Notification" ToRole="Item" />
+          <NavigationProperty Name="Users" Relationship="BarteringApplicationModel.FK__Notificat__User___42ACE4D4" FromRole="Notification" ToRole="User" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Notificat__Item___41B8C09B">
+          <End Type="BarteringApplicationModel.Item" Role="Item" Multiplicity="0..1" />
+          <End Type="BarteringApplicationModel.Notification" Role="Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Notificat__User___42ACE4D4">
+          <End Type="BarteringApplicationModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="BarteringApplicationModel.Notification" Role="Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="User_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="rating_id" />
+          </Key>
+          <Property Name="rating_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="rated_by_user_id" Type="Int32" Nullable="false" />
+          <Property Name="rating_value" Type="Int32" />
+          <NavigationProperty Name="Users" Relationship="BarteringApplicationModel.FK__Rating__rated_by__57A801BA" FromRole="Rating" ToRole="User" />
+          <NavigationProperty Name="Users1" Relationship="BarteringApplicationModel.FK__Rating__user_id__56B3DD81" FromRole="Rating" ToRole="User" />
+          <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Rating__rated_by__57A801BA">
+          <End Type="BarteringApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="BarteringApplicationModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="rated_by_user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rating__user_id__56B3DD81">
+          <End Type="BarteringApplicationModel.User" Role="User" Multiplicity="1" />
+          <End Type="BarteringApplicationModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="User_id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="Barter_id" />
+          </Key>
+          <Property Name="Barter_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item_id" Type="Int32" Nullable="false" />
+          <Property Name="BarterFor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Items" Relationship="BarteringApplicationModel.FK__BarterFor__Item___67DE69831" FromRole="WishList" ToRole="Item" />
+        </EntityType>
+        <Association Name="FK__BarterFor__Item___67DE69831">
+          <End Type="BarteringApplicationModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="BarteringApplicationModel.WishList" Role="WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="Item_id" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="Item_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BarteringApplicationModelStoreContainer" CdmEntityContainer="BarteringAppEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Admin_id" ColumnName="Admin_id" />
+                <ScalarProperty Name="User_name" ColumnName="User_name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_images">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Item_images">
+              <MappingFragment StoreEntitySet="Item_images">
+                <ScalarProperty Name="Image_id" ColumnName="Image_id" />
+                <ScalarProperty Name="Image_01" ColumnName="Image_01" />
+                <ScalarProperty Name="Image_02" ColumnName="Image_02" />
+                <ScalarProperty Name="Image_03" ColumnName="Image_03" />
+                <ScalarProperty Name="Image_04" ColumnName="Image_04" />
+                <ScalarProperty Name="Image_05" ColumnName="Image_05" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="isSold" ColumnName="isSold" />
+                <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Item_name" ColumnName="Item_name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Verification_status" ColumnName="Verification_status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Barter_for" ColumnName="Barter_for" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offers">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Offer">
+              <MappingFragment StoreEntitySet="Offer">
+                <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
+                <ScalarProperty Name="Offer_id" ColumnName="Offer_id" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Sender_id" ColumnName="Sender_id" />
+                <ScalarProperty Name="Receiver_id" ColumnName="Receiver_id" />
+                <ScalarProperty Name="Requested_item" ColumnName="Requested_item" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Offered_items">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Offered_items">
+              <MappingFragment StoreEntitySet="Offered_items">
+                <ScalarProperty Name="Offered_item_id" ColumnName="Offered_item_id" />
+                <ScalarProperty Name="Offer_id" ColumnName="Offer_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="ConfirmOfferRequestReceiver" ColumnName="ConfirmOfferRequestReceiver" />
+                <ScalarProperty Name="ConfirmOfferRequestSender" ColumnName="ConfirmOfferRequestSender" />
+                <ScalarProperty Name="Req_id" ColumnName="Req_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Req_status" ColumnName="Req_status" />
+                <ScalarProperty Name="Offer_id" ColumnName="Offer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trusted_party">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Trusted_party">
+              <MappingFragment StoreEntitySet="Trusted_party">
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="User_name" ColumnName="User_name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Profile_Pic" ColumnName="Profile_Pic" />
+                <ScalarProperty Name="rating_count" ColumnName="rating_count" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="User_name" ColumnName="User_name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Verification_requests">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Verification_requests">
+              <MappingFragment StoreEntitySet="Verification_requests">
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Trusted_party_id" ColumnName="Trusted_party_id" />
+                <ScalarProperty Name="Verification_id" ColumnName="Verification_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="Category_name" ColumnName="Category_name" />
+                <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attribute_Values">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Attribute_Values">
+              <MappingFragment StoreEntitySet="Attribute_Values">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="attribute_id" ColumnName="attribute_id" />
+                <ScalarProperty Name="value_id" ColumnName="value_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subcategories">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Subcategories">
+              <MappingFragment StoreEntitySet="Subcategories">
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="subcategory_name" ColumnName="subcategory_name" />
+                <ScalarProperty Name="subcategory_id" ColumnName="subcategory_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subcategory_Attributes">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Subcategory_Attributes">
+              <MappingFragment StoreEntitySet="Subcategory_Attributes">
+                <ScalarProperty Name="subcategory_id" ColumnName="subcategory_id" />
+                <ScalarProperty Name="attribute_name" ColumnName="attribute_name" />
+                <ScalarProperty Name="attribute_id" ColumnName="attribute_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Brands">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="subcategory_id" ColumnName="subcategory_id" />
+                <ScalarProperty Name="brand_name" ColumnName="brand_name" />
+                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Models">
+              <MappingFragment StoreEntitySet="Models">
+                <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+                <ScalarProperty Name="model_name" ColumnName="model_name" />
+                <ScalarProperty Name="model_id" ColumnName="model_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uploadedItemsAttributes">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.uploadedItemsAttributes">
+              <MappingFragment StoreEntitySet="uploadedItemsAttributes">
+                <ScalarProperty Name="attribute_value" ColumnName="attribute_value" />
+                <ScalarProperty Name="attribute_name" ColumnName="attribute_name" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notification">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="n_id" ColumnName="n_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rating">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="rating_value" ColumnName="rating_value" />
+                <ScalarProperty Name="rated_by_user_id" ColumnName="rated_by_user_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="rating_id" ColumnName="rating_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WishList">
+            <EntityTypeMapping TypeName="BarteringApplicationModel.WishList">
+              <MappingFragment StoreEntitySet="WishList">
+                <ScalarProperty Name="BarterFor" ColumnName="BarterFor" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Barter_id" ColumnName="Barter_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

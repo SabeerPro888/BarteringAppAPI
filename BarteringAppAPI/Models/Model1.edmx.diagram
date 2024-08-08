@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="45eb9a767b8a42648119b563f813f761" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="BarteringApplicationModel.Admin" Width="1.5" PointX="1.25" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Item_images" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Item" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Offer" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Offered_items" Width="1.5" PointX="10.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Request" Width="1.5" PointX="10.875" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Trusted_party" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.User" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Item_imag__Item___4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Items__User_id__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Offer__Requested__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Offered_i__Item___5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Trusted_p__Item___5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Offer__Receiver___571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Offer__Sender_id__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Offered_i__Offer__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Request__Offer_i__5EBF139D" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Verification_requests" Width="1.5" PointX="7.5" PointY="9.375" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Verificat__Item___70DDC3D8" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Verificat__Trust__6FE99F9F" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Category" Width="1.5" PointX="3.375" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Attribute_Values" Width="1.5" PointX="10.125" PointY="3.75" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Subcategories" Width="1.5" PointX="5.625" PointY="0.75" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Subcategory_Attributes" Width="1.5" PointX="7.875" PointY="3.625" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Attribute__attri__0C50D423" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Subcatego__categ__0697FACD" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Subcatego__subca__09746778" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Brands" Width="1.5" PointX="7.875" PointY="0.875" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Models" Width="1.5" PointX="10.125" PointY="1" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Brands__subcateg__1C873BEC" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Models__brand_id__1F63A897" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.uploadedItemsAttributes" Width="1.5" PointX="5.25" PointY="8.125" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__uploadedI__Item___2EA5EC27" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Notification" Width="1.5" PointX="10.25" PointY="11.125" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Notificat__Item___41B8C09B" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Notificat__User___42ACE4D4" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.Rating" Width="1.5" PointX="3" PointY="11.125" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Rating__rated_by__57A801BA" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__Rating__user_id__56B3DD81" />
+        <EntityTypeShape EntityType="BarteringApplicationModel.WishList" Width="1.5" PointX="5.375" PointY="14.5" />
+        <AssociationConnector Association="BarteringApplicationModel.FK__BarterFor__Item___67DE69831" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
